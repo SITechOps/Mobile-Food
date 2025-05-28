@@ -1,0 +1,18 @@
+import { Image, Text, View } from "react-native";
+
+interface HeaderProps {
+  title: string;
+}
+
+export function Header({ title }: HeaderProps) {
+  return (
+    <View className="mx-6 flex-row items-center border-b-2 border-[#ee4c58] pb-6 pt-8">
+      <Image
+        className="ml-2 h-16 w-40"
+        style={{ resizeMode: "contain" }}
+        source={require("@/assets/images/logo_techops.png")}
+      />
+      <Text className="flex-1 text-center font-heading text-2xl">{title}</Text>
+    </View>
+  );
+}

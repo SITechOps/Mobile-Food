@@ -1,32 +1,33 @@
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import "@/global.css";
 import { useProductStore } from "../store/produtoStore";
-import { useRouter } from "expo-router";
+import { Header } from "../components/header";
+import { Card } from "../components/card";
+import { Button } from "../components/button";
+import { router } from "expo-router";
 
 export default function App() {
   const { products } = useProductStore();
-  const router = useRouter();
 
   return (
-    <View className="m-auto w-3/5 flex-1 items-center justify-center">
-      {products.length == 0 && <Text>Não há produtos na lista!</Text>}
-
-      <ScrollView className="mb-4 w-full">
-        {products.map((produto) => (
-          <View key={produto.id}>
-            <Text className="font-body text-4xl">{produto.name}</Text>
-            <Text className="font-body text-4xl">
-              R$ {produto.price.toFixed(2)}
+    <>
+      <Header title="Mobile Food" />
+      <View className="m-auto my-4 w-4/5 flex-1 items-center justify-center">
+        {products.length == 0 ? (
+          <View className="flex-1 items-center justify-center">
+            <Text className="font-heading text-2xl">
+              Não há produtos na lista!
             </Text>
           </View>
-        ))}
-      </ScrollView>
-      <TouchableOpacity
-        className="w-full rounded-lg bg-slate-700 p-4"
-        onPress={() => router.push("/form")}
-      >
-        <Text className="text-white">Adicionar</Text>
-      </TouchableOpacity>
-    </View>
+        ) : (
+          <ScrollView className="mt-8 w-full">
+            {products.map((product) => (
+              <Card key={product.id} product={product} />
+            ))}
+          </ScrollView>
+        )}
+        <Button onPress={() => router.push("/form")} />
+      </View>
+    </>
   );
 }

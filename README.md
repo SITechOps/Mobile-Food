@@ -47,9 +47,9 @@ npm install # ou npm i
 2. Inicie o projeto:
 
 ```bash
-npm start --clear
+npm start --clear # ou -c
 # ou, se preferir:
-npx expo start --clear
+npx expo start --clear # ou -c
 ```
 
 - `--clear`: Limpa o cache, garantindo um ambiente mais "limpo" ao iniciar o app. 🧹

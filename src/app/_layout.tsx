@@ -1,7 +1,7 @@
-import { SafeAreaView } from "react-native-safe-area-context";
 import { Slot } from "expo-router";
-import { View } from "react-native";
-import Loading from "../components/loading";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { StatusBar, View } from "react-native";
+import { Loading } from "../components/loading";
 import {
   Dosis_400Regular,
   Dosis_600SemiBold,
@@ -20,9 +20,12 @@ export default function Layout() {
     return <Loading />;
   }
 
+  function getTitle() {}
+
   return (
     <SafeAreaView className="flex-1">
-      <View className="absolute bottom-4 left-0 top-7 w-3/5 rounded-r-full bg-[#fdedee]" />
+      <StatusBar hidden={false} />
+      <View className="absolute bottom-0 left-0 top-0 w-1/2 rounded-r-full bg-[#fdedee]" />
       <Slot />
     </SafeAreaView>
   );

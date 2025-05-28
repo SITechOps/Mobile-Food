@@ -1,10 +1,5 @@
 import { create } from "zustand";
-
-interface ProductProps {
-  id: number;
-  name: string;
-  price: number;
-}
+import { ProductProps } from "../interfaces/IProduct";
 
 interface StateProps {
   products: ProductProps[];
@@ -12,9 +7,23 @@ interface StateProps {
 }
 
 export const useProductStore = create<StateProps>((set) => ({
-  products: [],
+  products: [
+    {
+      category: "Massas",
+      description: "Oi",
+      name: "Pizza",
+      price: "12.50",
+      id: 273234,
+    },
+  ],
   addProducts: (newProduct) =>
     set((state) => ({
-      products: [...state.products, newProduct],
+      products: [
+        ...state.products,
+        {
+          ...newProduct,
+          id: Date.now(),
+        },
+      ],
     })),
 }));
