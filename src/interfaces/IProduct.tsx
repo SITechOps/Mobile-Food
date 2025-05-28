@@ -6,5 +6,5 @@ export interface ProductFormData {
 }
 
 export interface ProductProps extends ProductFormData {
-  id?: number;
+  id: number;
 }

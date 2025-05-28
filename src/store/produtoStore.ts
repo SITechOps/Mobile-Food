@@ -1,9 +1,10 @@
 import { create } from "zustand";
-import { ProductProps } from "../interfaces/IProduct";
+import { ProductFormData, ProductProps } from "../interfaces/IProduct";
 
 interface StateProps {
   products: ProductProps[];
-  addProduct: (newProduct: ProductProps) => void;
+  addProduct: (newProduct: ProductFormData) => void;
+  removeProduct: (idProduct: number) => void;
 }
 
 export const useProductStore = create<StateProps>((set) => ({
@@ -27,4 +28,10 @@ export const useProductStore = create<StateProps>((set) => ({
         },
       ],
     })),
+
+  removeProduct: (idProduct) => {
+    set(({ products }) => ({
+      products: products.filter((product) => product.id != idProduct),
+    }));
+  },
 }));
