@@ -12,12 +12,12 @@ import { LinkButton } from "../components/link-button";
 
 export default function Form() {
   const { control, handleSubmit } = useForm<ProductFormData>();
-  const { addProducts } = useProductStore();
+  const { addProduct } = useProductStore();
 
   function onSubmit(data: ProductFormData) {
     try {
       console.log("oi", data);
-      addProducts(data);
+      addProduct(data);
       Alert.alert("Sucesso", "Produto criado com sucesso!", [
         {
           text: "OK",

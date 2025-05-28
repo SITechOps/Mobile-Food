@@ -49,6 +49,7 @@ export function CategoryPicker({ control }: CategoryPickerProps) {
               containerStyle={{
                 borderRadius: 8,
               }}
+              iconStyle={{ tintColor: "#ee4c58" }}
               activeColor="#fdedee"
               mode="modal"
               backgroundColor="rgba(0,0,0,0.5)"

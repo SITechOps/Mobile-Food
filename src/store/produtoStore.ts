@@ -3,7 +3,7 @@ import { ProductProps } from "../interfaces/IProduct";
 
 interface StateProps {
   products: ProductProps[];
-  addProducts: (newProduct: ProductProps) => void;
+  addProduct: (newProduct: ProductProps) => void;
 }
 
 export const useProductStore = create<StateProps>((set) => ({
@@ -16,7 +16,8 @@ export const useProductStore = create<StateProps>((set) => ({
       id: 273234,
     },
   ],
-  addProducts: (newProduct) =>
+
+  addProduct: (newProduct) =>
     set((state) => ({
       products: [
         ...state.products,
