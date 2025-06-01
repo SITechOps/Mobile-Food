@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1748644232997,
+    "name": "Pizza",
+    "price": "12.50",
+    "description": "Oi",
+    "category": "Massas"
+  },
+  {
+    "id": 1748644270682,
+    "name": "Hambúrguer",
+    "price": "18.50",
+    "description": "Oi",
+    "category": "Lanches"
+  }
+]

@@ -1,22 +1,16 @@
 import { create } from "zustand";
 import { ProductFormData, ProductProps } from "../interfaces/IProduct";
+import sampleProducts from "./sample.json";
 
 interface StateProps {
   products: ProductProps[];
   addProduct: (newProduct: ProductFormData) => void;
+  editProduct: (idProduct: number, newProduct: ProductFormData) => void;
   removeProduct: (idProduct: number) => void;
 }
 
 export const useProductStore = create<StateProps>((set) => ({
-  products: [
-    {
-      category: "Massas",
-      description: "Oi",
-      name: "Pizza",
-      price: "12.50",
-      id: 273234,
-    },
-  ],
+  products: sampleProducts || [],
 
   addProduct: (newProduct) =>
     set((state) => ({
@@ -29,9 +23,15 @@ export const useProductStore = create<StateProps>((set) => ({
       ],
     })),
 
-  removeProduct: (idProduct) => {
+  editProduct: (idProduct, newProduct) =>
+    set(({ products }) => ({
+      products: products.map((products) =>
+        products.id === idProduct ? { ...products, ...newProduct } : products,
+      ),
+    })),
+
+  removeProduct: (idProduct) =>
     set(({ products }) => ({
       products: products.filter((product) => product.id != idProduct),
-    }));
-  },
+    })),
 }));

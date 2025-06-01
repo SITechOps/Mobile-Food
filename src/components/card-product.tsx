@@ -1,7 +1,8 @@
-import { View, Text, Image, TouchableOpacity, Alert } from "react-native";
+import { router } from "expo-router";
+import { View, Text, Image, Alert } from "react-native";
+import { useProductStore } from "../store/productStore";
 import { ProductProps } from "../interfaces/IProduct";
 import { Icon } from "./icon";
-import { useProductStore } from "../store/produtoStore";
 
 interface CardProps {
   product: ProductProps;
@@ -27,7 +28,15 @@ export function Card({ product }: CardProps) {
         </View>
       </View>
       <View className="flex-row items-center gap-2">
-        <Icon name="edit" />
+        <Icon
+          name="edit"
+          onPress={() => {
+            router.push({
+              pathname: "/form/edit-product",
+              params: { id: product.id },
+            });
+          }}
+        />
         <Icon
           name="trash-2"
           onPress={() => {

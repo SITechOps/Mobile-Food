@@ -20,8 +20,6 @@ export default function Layout() {
     return <Loading />;
   }
 
-  function getTitle() {}
-
   return (
     <SafeAreaView className="flex-1">
       <StatusBar hidden={false} />

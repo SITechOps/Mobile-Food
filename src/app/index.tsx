@@ -1,10 +1,10 @@
-import { FlatList, Text, View } from "react-native";
 import "@/global.css";
-import { useProductStore } from "../store/produtoStore";
-import { Header } from "../components/header";
-import { Card } from "../components/card";
-import { Button } from "../components/button";
+import { FlatList, Text, View } from "react-native";
 import { router } from "expo-router";
+import { Button } from "../components/button";
+import { Card } from "../components/card-product";
+import { Header } from "../components/header";
+import { useProductStore } from "../store/productStore";
 
 export default function App() {
   const { products } = useProductStore();
@@ -29,7 +29,7 @@ export default function App() {
             showsVerticalScrollIndicator={false}
           />
         )}
-        <Button onPress={() => router.push("/form")} />
+        <Button onPress={() => router.push("/form/add-product")} />
       </View>
     </>
   );

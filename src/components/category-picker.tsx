@@ -1,5 +1,5 @@
-import { Controller, Control } from "react-hook-form";
 import { Text, View } from "react-native";
+import { Controller, Control } from "react-hook-form";
 import { Dropdown } from "react-native-element-dropdown";
 import { ProductFormData } from "../interfaces/IProduct";
 
@@ -22,7 +22,7 @@ export function CategoryPicker({ control }: CategoryPickerProps) {
       name="category"
       rules={{ required: true }}
       render={({ field: { value, onChange } }) => (
-        <View className="mb-6 gap-2">
+        <View className="gap-2">
           <Text className="font-heading text-xl">Categoria:</Text>
           <View className="rounded-lg border border-transparent bg-[#f1f1f1] px-4">
             <Dropdown
