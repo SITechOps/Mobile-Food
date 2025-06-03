@@ -3,13 +3,14 @@ import { View, Text, Image, Alert, TouchableOpacity } from "react-native";
 import { useProductStore } from "../store/productStore";
 import { ProductProps } from "../interfaces/IProduct";
 import { Icon } from "./icon";
+import { useProductActions } from "../hooks/use-product-actions";
 
 interface CardProps {
   product: ProductProps;
 }
 
 export function Card({ product }: CardProps) {
-  const { removeProduct } = useProductStore();
+  const { handleDeleteProduct } = useProductActions();
 
   return (
     <TouchableOpacity
@@ -33,29 +34,18 @@ export function Card({ product }: CardProps) {
       </View>
       <View className="-mr-2 flex-row items-center gap-1">
         <Icon
+          className="px-2 py-4"
           name="edit"
+          color="#a9a9a9"
           onPress={() => {
             router.push(`/form/edit-product?id=${product.id}`);
           }}
         />
         <Icon
+          className="px-2 py-4"
           name="trash-2"
-          onPress={() => {
-            Alert.alert(
-              "Confirmar remoção",
-              "Você deseja excluir esse produto?",
-              [
-                {
-                  text: "Cancelar",
-                },
-                {
-                  text: "Excluir",
-                  style: "destructive",
-                  onPress: () => removeProduct(product.id),
-                },
-              ],
-            );
-          }}
+          color="#ee7b83"
+          onPress={() => handleDeleteProduct(product.id)}
         />
       </View>
     </TouchableOpacity>

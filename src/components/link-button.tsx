@@ -4,6 +4,7 @@ import { tv } from "tailwind-variants";
 
 type LinkButtonProps = LinkProps & {
   outlined?: boolean;
+  title: string;
 };
 
 const button = tv({
@@ -30,12 +31,12 @@ const text = tv({
   },
 });
 
-export function LinkButton({ outlined, ...rest }: LinkButtonProps) {
+export function LinkButton({ outlined, title, ...rest }: LinkButtonProps) {
   return (
     <Link {...rest} asChild>
       <Pressable className={button({ outlined })}>
         {({ pressed }) => (
-          <Text className={text({ outlined, pressed })}>Voltar</Text>
+          <Text className={text({ outlined, pressed })}>{title}</Text>
         )}
       </Pressable>
     </Link>

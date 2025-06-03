@@ -54,7 +54,7 @@ export function Form({ control, onPress, title }: FormProps) {
         />
         <View className="gap-4">
           <Button type="save" onPress={onPress} />
-          <LinkButton href="/" />
+          <LinkButton href="/" title="Voltar" />
         </View>
       </View>
     </KeyboardAwareScrollView>

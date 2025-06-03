@@ -1,20 +1,17 @@
 import { ComponentProps } from "react";
 import { Feather } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, TouchableOpacityProps } from "react-native";
 
-interface IconProps {
-  name: ComponentProps<typeof Feather>["name"];
-  onPress?: () => void;
-}
+type IconName = ComponentProps<typeof Feather>["name"];
+type IconProps = TouchableOpacityProps & {
+  name: IconName;
+  color: string;
+};
 
-export function Icon({ name, onPress }: IconProps) {
+export function Icon({ name, color, ...rest }: IconProps) {
   return (
-    <TouchableOpacity className="px-2 py-4" onPress={onPress}>
-      <Feather
-        name={name}
-        color={name == "edit" ? "#a9a9a9" : "#ee7b83"}
-        size={25}
-      />
+    <TouchableOpacity {...rest}>
+      <Feather name={name} color={color} size={25} />
     </TouchableOpacity>
   );
 }

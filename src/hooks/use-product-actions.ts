@@ -1,0 +1,57 @@
+import { Alert } from "react-native";
+import { router, useLocalSearchParams } from "expo-router";
+import { ProductFormData } from "../interfaces/IProduct";
+import { useProductStore } from "../store/productStore";
+
+export function useProductActions() {
+  const { id } = useLocalSearchParams<{ id?: string }>();
+  const { products, editProduct, addProduct, removeProduct } =
+    useProductStore();
+
+  function getProductInfo() {
+    return products.find((p) => p.id === id);
+  }
+
+  function onSubmit(data: ProductFormData) {
+    const isEditing = Boolean(id);
+    try {
+      if (isEditing) {
+        editProduct(id!, data);
+      } else {
+        addProduct(data);
+      }
+      Alert.alert(
+        "Sucesso",
+        `Produto ${isEditing ? "alterado" : "criado"} com sucesso!`,
+        [
+          {
+            text: "OK",
+            onPress: () => router.back(),
+          },
+        ],
+      );
+    } catch (error) {
+      Alert.alert(
+        "Erro",
+        `Não foi possível ${isEditing ? "alterar" : "criar"} o produto.`,
+      );
+    }
+  }
+
+  function handleDeleteProduct(id: string) {
+    Alert.alert("Confirmar remoção", "Você deseja excluir esse produto?", [
+      {
+        text: "Cancelar",
+      },
+      {
+        text: "Excluir",
+        style: "destructive",
+        onPress: () => removeProduct(id),
+      },
+    ]);
+  }
+
+  const product = getProductInfo();
+
+  return { product, onSubmit, handleDeleteProduct };
+}
