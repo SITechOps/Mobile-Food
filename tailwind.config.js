@@ -11,7 +11,7 @@ module.exports = {
       fontFamily: {
         body: "Dosis_400Regular",
         heading: "Dosis_600SemiBold",
-        bold: "Dosis_700Bold",
+        highlight: "Dosis_700Bold",
       },
     },
   },

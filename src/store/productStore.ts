@@ -5,8 +5,8 @@ import sampleProducts from "./sample.json";
 interface StateProps {
   products: ProductProps[];
   addProduct: (newProduct: ProductFormData) => void;
-  editProduct: (idProduct: number, newProduct: ProductFormData) => void;
-  removeProduct: (idProduct: number) => void;
+  editProduct: (idProduct: string, newProduct: ProductFormData) => void;
+  removeProduct: (idProduct: string) => void;
 }
 
 export const useProductStore = create<StateProps>((set) => ({
@@ -18,7 +18,7 @@ export const useProductStore = create<StateProps>((set) => ({
         ...state.products,
         {
           ...newProduct,
-          id: Date.now(),
+          id: String(Date.now()),
         },
       ],
     })),

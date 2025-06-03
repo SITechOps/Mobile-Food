@@ -25,11 +25,11 @@ export default function App() {
             data={products}
             keyExtractor={(item) => String(item.id)}
             renderItem={({ item }) => <Card product={item} />}
-            contentContainerStyle={{ paddingTop: 24, gap: 16 }}
+            contentContainerStyle={{ gap: 16 }}
             showsVerticalScrollIndicator={false}
           />
         )}
-        <Button onPress={() => router.push("/form/add-product")} />
+        <Button type="add" onPress={() => router.push("/form/add-product")} />
       </View>
     </>
   );

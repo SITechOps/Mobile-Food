@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { Controller, Control } from "react-hook-form";
 import { Dropdown } from "react-native-element-dropdown";
 import { ProductFormData } from "../interfaces/IProduct";
@@ -24,7 +24,10 @@ export function CategoryPicker({ control }: CategoryPickerProps) {
       render={({ field: { value, onChange } }) => (
         <View className="gap-2">
           <Text className="font-heading text-xl">Categoria:</Text>
-          <View className="rounded-lg border border-transparent bg-[#f1f1f1] px-4">
+          <TouchableOpacity
+            activeOpacity={0.6}
+            className="rounded-lg border border-transparent bg-[#f1f1f1] px-4"
+          >
             <Dropdown
               data={CATEGORIES}
               labelField="label"
@@ -54,7 +57,7 @@ export function CategoryPicker({ control }: CategoryPickerProps) {
               mode="modal"
               backgroundColor="rgba(0,0,0,0.5)"
             />
-          </View>
+          </TouchableOpacity>
         </View>
       )}
     />

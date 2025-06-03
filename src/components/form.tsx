@@ -18,31 +18,44 @@ export function Form({ control, onPress, title }: FormProps) {
   return (
     <KeyboardAwareScrollView>
       <Header title={title} />
-      <View className="m-8 gap-5 rounded-xl bg-white px-8 py-6 shadow-lg shadow-[#a9a9a9]">
+      <View className="mx-8 gap-4 rounded-xl bg-white px-8 py-6 shadow-lg shadow-[#a9a9a9]">
         <Input
           name="name"
-          label="Nome:"
+          label="Nome"
           placeholder="Nome do produto..."
           control={control}
         />
-        <Input
-          name="price"
-          label="Preço (R$):"
-          placeholder="0,00"
-          keyboardType="number-pad"
-          control={control}
-        />
+        <View className="flex-row gap-10">
+          <Input
+            name="price"
+            label="Preço (R$)"
+            placeholder="0,00"
+            keyboardType="number-pad"
+            control={control}
+          />
+          <Input
+            name="stock"
+            label="Estoque"
+            placeholder="0"
+            keyboardType="number-pad"
+            control={control}
+          />
+        </View>
         <CategoryPicker control={control} />
         <Input
           name="description"
-          label="Descrição:"
+          label="Descrição"
           placeholder="Descreva brevemente o produto..."
-          style={{ height: 80, textAlignVertical: "top" }}
+          textAlignVertical="top"
+          style={{ height: 80 }}
+          numberOfLines={3}
           control={control}
           multiline
         />
-        <Button onPress={onPress} />
-        <LinkButton href="/" title="Voltar" />
+        <View className="gap-4">
+          <Button type="save" onPress={onPress} />
+          <LinkButton href="/" />
+        </View>
       </View>
     </KeyboardAwareScrollView>
   );

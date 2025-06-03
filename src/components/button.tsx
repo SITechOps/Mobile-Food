@@ -1,15 +1,22 @@
 import { Feather } from "@expo/vector-icons";
 import { TouchableOpacity, Text, TouchableOpacityProps } from "react-native";
 
-export function Button({ ...rest }: TouchableOpacityProps) {
+type ButtonProps = TouchableOpacityProps & {
+  type: "add" | "save";
+};
+
+export function Button({ type, ...rest }: ButtonProps) {
+  const isAdd = type === "add";
+
   return (
     <TouchableOpacity
-      className="mt-6 w-full flex-row items-center justify-center gap-4 rounded-xl bg-[#ee4c58] p-3"
+      activeOpacity={0.8}
+      className="mt-4 w-full flex-row items-center justify-center gap-3 rounded-xl bg-[#ee4c58] p-3"
       {...rest}
     >
-      <Feather name="plus-circle" color={"white"} size={24} />
-      <Text className="text-center font-heading text-2xl text-white">
-        Adicionar
+      {isAdd && <Feather name="plus-circle" size={24} color="white" />}
+      <Text className="font-heading text-2xl text-white">
+        {isAdd ? "Adicionar" : "Salvar"}
       </Text>
     </TouchableOpacity>
   );

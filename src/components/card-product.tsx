@@ -1,5 +1,5 @@
 import { router } from "expo-router";
-import { View, Text, Image, Alert } from "react-native";
+import { View, Text, Image, Alert, TouchableOpacity } from "react-native";
 import { useProductStore } from "../store/productStore";
 import { ProductProps } from "../interfaces/IProduct";
 import { Icon } from "./icon";
@@ -12,29 +12,30 @@ export function Card({ product }: CardProps) {
   const { removeProduct } = useProductStore();
 
   return (
-    <View className="flex-row items-center justify-between rounded-lg border border-[#a9a9a9] bg-white px-6 py-4">
-      <View className="flex-row items-center gap-6">
+    <TouchableOpacity
+      activeOpacity={0.6}
+      onPress={() => router.push(`/product/${product.id}`)}
+      className="flex-row items-center justify-between rounded-lg border border-[#a9a9a9] bg-white px-5 py-4"
+    >
+      <View className="flex-1 flex-row items-center gap-4">
         <Image
           source={{
-            uri: "https://cloudfront-us-east-1.images.arcpublishing.com/estadao/77XTHHCCLBEXLC2Y5RK4PN37CE.jpg",
+            uri: product.imageUrl,
           }}
-          className="size-14 rounded-lg"
+          className="size-14 rounded-full"
         />
-        <View>
+        <View className="flex-1">
           <Text className="font-heading text-2xl">{product.name}</Text>
           <Text className="font-body text-xl">
             R$ {parseFloat(product.price).toFixed(2)}
           </Text>
         </View>
       </View>
-      <View className="flex-row items-center gap-2">
+      <View className="-mr-2 flex-row items-center gap-1">
         <Icon
           name="edit"
           onPress={() => {
-            router.push({
-              pathname: "/form/edit-product",
-              params: { id: product.id },
-            });
+            router.push(`/form/edit-product?id=${product.id}`);
           }}
         />
         <Icon
@@ -57,6 +58,6 @@ export function Card({ product }: CardProps) {
           }}
         />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }

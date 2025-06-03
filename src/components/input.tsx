@@ -14,13 +14,14 @@ export function Input({ label, name, control, ...rest }: InputProps) {
       control={control}
       name={name}
       rules={{ required: true }}
-      render={({ field: { value, onChange } }) => (
-        <View className="gap-2">
-          <Text className="font-heading text-xl">{label}</Text>
+      render={({ field: { value, onChange, onBlur } }) => (
+        <View className="flex-1 gap-2">
+          <Text className="font-heading text-xl">{label}:</Text>
           <TextInput
             value={value}
             onChangeText={onChange}
-            className="rounded-lg border border-transparent bg-[#f1f1f1] px-4 font-body text-lg focus:border-[#ee4c58]"
+            onBlur={onBlur}
+            className="rounded-lg border border-transparent bg-[#f1f1f1] px-4 py-3 font-body text-lg focus:border-[#ee4c58]"
             {...rest}
           />
         </View>

@@ -8,8 +8,8 @@ import { useProductStore } from "@/src/store/productStore";
 export default function EditForm() {
   const { products, editProduct } = useProductStore();
 
-  const { id } = useLocalSearchParams();
-  const product = products.find((p) => p.id === Number(id));
+  const { id } = useLocalSearchParams<{ id: string }>();
+  const product = products.find((p) => p.id === id);
 
   const { control, handleSubmit } = useForm<ProductFormData>({
     defaultValues: product && { ...product },
@@ -17,7 +17,7 @@ export default function EditForm() {
 
   function onSubmit(data: ProductFormData) {
     try {
-      editProduct(Number(id), data);
+      editProduct(id, data);
       Alert.alert("Sucesso", "Produto alterado com sucesso!", [
         {
           text: "OK",
