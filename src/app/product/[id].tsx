@@ -34,10 +34,20 @@ export default function ProductDetails() {
             <Badge color="#ee4c58">{product?.category}</Badge>
           </View>
           <View>
-            <TopicLabel color="#28d1b4" label="Estoque" />
-            <Badge color="#28d1b4">
-              {product?.stock} {product?.stock == "1" ? "unidade" : "unidades"}
-            </Badge>
+            {product?.stock == "0" ? (
+              <>
+                <TopicLabel color="#a9a9a9" label="Estoque" />
+                <Badge color="#a9a9a9">Indisponível</Badge>
+              </>
+            ) : (
+              <>
+                <TopicLabel color="#28d1b4" label="Estoque" />
+                <Badge color="#28d1b4">
+                  {product?.stock}{" "}
+                  {product?.stock == "1" ? "unidade" : "unidades"}
+                </Badge>
+              </>
+            )}
           </View>
         </View>
 

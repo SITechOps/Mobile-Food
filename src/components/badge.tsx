@@ -8,7 +8,10 @@ interface BadgeProps {
 export function Badge({ color, children }: BadgeProps) {
   return (
     <Text
-      className={`w-32 rounded-full bg-[${color}] py-2 text-center font-highlight text-lg tracking-wide text-white`}
+      style={{
+        backgroundColor: color,
+      }}
+      className={`w-32 rounded-full py-2 text-center font-highlight text-lg text-white`}
     >
       {children}
     </Text>
