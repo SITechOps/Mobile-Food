@@ -5,7 +5,7 @@ import { useProductActions } from "../hooks/use-product-actions";
 import { twMerge } from "tailwind-merge";
 
 interface ActionIconsProps {
-  productId: string;
+  productId: string | undefined;
   className?: string;
 }
 export function ActionIcons({ productId, className }: ActionIconsProps) {

@@ -1,5 +1,5 @@
 import { Slot } from "expo-router";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar, View } from "react-native";
 import { Loading } from "../components/loading";
 import {
@@ -23,12 +23,10 @@ export default function Layout() {
   }
 
   return (
-    <SafeAreaProvider>
-      <SafeAreaView className="flex-1">
-        <StatusBar hidden={false} />
-        <View className="absolute bottom-0 left-0 top-0 w-1/2 rounded-r-full bg-[#fdedee]" />
-        <Slot />
-      </SafeAreaView>
-    </SafeAreaProvider>
+    <SafeAreaView className="flex-1">
+      <StatusBar hidden={false} />
+      <View className="absolute bottom-0 left-0 top-0 w-1/2 rounded-r-full bg-[#fdedee]" />
+      <Slot />
+    </SafeAreaView>
   );
 }

@@ -38,7 +38,7 @@ export function useProductActions() {
     }
   }
 
-  function handleDeleteProduct(id: string) {
+  function handleDeleteProduct(productId: string | undefined) {
     Alert.alert("Confirmar remoção", "Você deseja excluir esse produto?", [
       {
         text: "Cancelar",
@@ -46,12 +46,15 @@ export function useProductActions() {
       {
         text: "Excluir",
         style: "destructive",
-        onPress: () => removeProduct(id),
+        onPress: () => {
+          if (productId) {
+            removeProduct(productId);
+            router.push("/");
+          }
+        },
       },
     ]);
   }
 
-  const product = getProductInfo();
-
-  return { product, onSubmit, handleDeleteProduct };
+  return { product: getProductInfo(), onSubmit, handleDeleteProduct };
 }
