@@ -8,7 +8,6 @@ import { useProductStore } from "../store/productStore";
 
 export default function App() {
   const { products } = useProductStore();
-
   return (
     <>
       <Header title="Mobile Food" />
@@ -29,7 +28,12 @@ export default function App() {
             showsVerticalScrollIndicator={false}
           />
         )}
-        <Button type="add" onPress={() => router.push("/form/add-product")} />
+        <Button
+          title="Adicionar"
+          type="filled"
+          className="text-2xl"
+          onPress={() => router.push("/form/add-product")}
+        />
       </View>
     </>
   );

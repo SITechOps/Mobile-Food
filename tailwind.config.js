@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         body: "Dosis_400Regular",
+        medium: "Dosis_500Medium",
         heading: "Dosis_600SemiBold",
         highlight: "Dosis_700Bold",
       },

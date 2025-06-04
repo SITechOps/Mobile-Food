@@ -1,12 +1,12 @@
 import { View } from "react-native";
 import { Control } from "react-hook-form";
+import { Button } from "./button";
+import { CategoryPicker } from "./category-picker";
 import { Header } from "./header";
 import { Input } from "./input";
-import { Button } from "./button";
-import { LinkButton } from "./link-button";
-import { CategoryPicker } from "./category-picker";
 import { ProductFormData } from "../interfaces/IProduct";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { router } from "expo-router";
 
 interface FormProps {
   control: Control<ProductFormData>;
@@ -52,9 +52,9 @@ export function Form({ control, onPress, title }: FormProps) {
           control={control}
           multiline
         />
-        <View className="gap-4">
-          <Button type="save" onPress={onPress} />
-          <LinkButton href="/" title="Voltar" />
+        <View className="mt-4 gap-3">
+          <Button title="Salvar" type="filled" onPress={onPress} />
+          <Button title="Voltar" type="plain" onPress={() => router.back()} />
         </View>
       </View>
     </KeyboardAwareScrollView>

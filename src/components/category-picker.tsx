@@ -7,13 +7,18 @@ interface CategoryPickerProps {
   control: Control<ProductFormData>;
 }
 
-const CATEGORIES = [
-  { label: "Bebidas", value: "Bebidas" },
-  { label: "Lanches", value: "Lanches" },
-  { label: "Sobremesas", value: "Sobremesas" },
-  { label: "Massas", value: "Massas" },
-  { label: "Vegetariana", value: "Vegetariana" },
+const availableOptions = [
+  "Bebidas",
+  "Lanches",
+  "Sobremesas",
+  "Massas",
+  "Vegetariana",
 ];
+
+const CATEGORIES = availableOptions.map((item) => ({
+  label: item,
+  value: item,
+}));
 
 export function CategoryPicker({ control }: CategoryPickerProps) {
   return (

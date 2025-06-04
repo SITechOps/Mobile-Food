@@ -1,34 +1,19 @@
-import { router } from "expo-router";
 import { Image, View, Text } from "react-native";
+import { ActionIcons } from "@/src/components/action-icons";
 import { Badge } from "@/src/components/badge";
 import { Header } from "@/src/components/header";
-import { LinkButton } from "@/src/components/link-button";
 import { TopicLabel } from "@/src/components/topic-label";
-import { Icon } from "@/src/components/icon";
 import { useProductActions } from "@/src/hooks/use-product-actions";
+import { Button } from "@/src/components/button";
+import { router } from "expo-router";
 
 export default function ProductDetails() {
-  const { product, handleDeleteProduct } = useProductActions();
+  const { product } = useProductActions();
   return (
     <>
       <Header title="Detalhes do Produto" />
       <View className="mx-10 rounded-xl bg-white px-8 py-8 shadow-xl shadow-[#a9a9a9]">
-        <View className="-mr-4 ml-auto flex-row gap-1 text-end">
-          <Icon
-            className="px-2 pb-4"
-            name="edit"
-            color="#a9a9a9"
-            onPress={() => {
-              router.push(`/form/edit-product?id=${product!.id}`);
-            }}
-          />
-          <Icon
-            className="px-2 pb-4"
-            name="trash-2"
-            color="#ee7b83"
-            onPress={() => handleDeleteProduct(product!.id)}
-          />
-        </View>
+        <ActionIcons productId={product!.id} className="-mt-5 ml-auto" />
         <View className="-mt-3 mb-3 items-center">
           <Image
             source={{
@@ -73,7 +58,7 @@ export default function ProductDetails() {
           </Text>
         </View>
 
-        <LinkButton href="/" title="Voltar" outlined />
+        <Button title="Voltar" type="outlined" onPress={() => router.back()} />
       </View>
     </>
   );

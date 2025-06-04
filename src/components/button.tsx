@@ -1,23 +1,47 @@
 import { Feather } from "@expo/vector-icons";
 import { TouchableOpacity, Text, TouchableOpacityProps } from "react-native";
+import { tv } from "tailwind-variants";
 
 type ButtonProps = TouchableOpacityProps & {
-  type: "add" | "save";
+  title: string;
+  type: "filled" | "outlined" | "plain";
+  className?: string;
 };
 
-export function Button({ type, ...rest }: ButtonProps) {
-  const isAdd = type === "add";
+const button = tv({
+  slots: {
+    view: "w-full rounded-xl flex-row items-center justify-center gap-4",
+    text: "text-center text-xl",
+  },
+  variants: {
+    type: {
+      filled: {
+        view: "bg-[#ee4c58] p-3",
+        text: "font-heading text-white",
+      },
+      outlined: {
+        view: "border border-[#ee4c58] bg-white p-2",
+        text: "text-[#ee4c58] font-medium",
+      },
+      plain: {
+        view: "py-1 px-6 w-fit m-auto",
+        text: "font-body",
+      },
+    },
+  },
+  defaultVariants: {
+    type: "filled",
+  },
+});
 
+export function Button({ title, type, className, ...rest }: ButtonProps) {
+  const { view, text } = button({ type });
   return (
-    <TouchableOpacity
-      activeOpacity={0.8}
-      className="mt-4 w-full flex-row items-center justify-center gap-3 rounded-xl bg-[#ee4c58] p-3"
-      {...rest}
-    >
-      {isAdd && <Feather name="plus-circle" size={24} color="white" />}
-      <Text className="font-heading text-2xl text-white">
-        {isAdd ? "Adicionar" : "Salvar"}
-      </Text>
+    <TouchableOpacity activeOpacity={0.7} className={view()} {...rest}>
+      {title == "Adicionar" && (
+        <Feather name="plus-circle" size={24} color="white" />
+      )}
+      <Text className={text({ className })}>{title}</Text>
     </TouchableOpacity>
   );
 }
