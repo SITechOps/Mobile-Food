@@ -1,6 +1,11 @@
 import { Slot } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { StatusBar, View } from "react-native";
+import {
+  Keyboard,
+  StatusBar,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import { Loading } from "../components/loading";
 import {
   Dosis_400Regular,
