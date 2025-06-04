@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { Control } from "react-hook-form";
+import { Control, Controller } from "react-hook-form";
 import { Button } from "./button";
 import { CategoryPicker } from "./category-picker";
 import { Header } from "./header";
@@ -7,6 +7,7 @@ import { Input } from "./input";
 import { ProductFormData } from "../interfaces/IProduct";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { router } from "expo-router";
+import { UploadImage } from "./upload-image";
 
 interface FormProps {
   control: Control<ProductFormData>;
@@ -46,11 +47,18 @@ export function Form({ control, onPress, title }: FormProps) {
           name="description"
           label="Descrição"
           placeholder="Descreva brevemente o produto..."
-          textAlignVertical="top"
-          style={{ height: 80 }}
           numberOfLines={3}
+          textAlignVertical="top"
           control={control}
           multiline
+        />
+        <Controller
+          control={control}
+          name="imageUrl"
+          rules={{ required: true }}
+          render={({ field: { value, onChange } }) => (
+            <UploadImage value={value} onChange={onChange} />
+          )}
         />
         <View className="mt-4 gap-3">
           <Button title="Salvar" type="filled" onPress={onPress} />
