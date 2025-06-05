@@ -11,7 +11,9 @@ export function InfoTag({ color, icon, children }: InfoTagProps) {
   return (
     <View className="flex-row items-center gap-2">
       <Feather name={icon} size={18} color={color} />
-      <Text className={`font-heading text-xl text-[${color}]`}>{children}</Text>
+      <Text style={{ color: color }} className={`font-heading text-xl`}>
+        {children}
+      </Text>
     </View>
   );
 }

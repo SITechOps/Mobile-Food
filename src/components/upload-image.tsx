@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
+import { colors } from "../constants/colors";
 
 interface UploadImageProps {
   value: string | null;
@@ -8,7 +9,7 @@ interface UploadImageProps {
 }
 
 export function UploadImage({ value, onChange }: UploadImageProps) {
-  const pickImage = async () => {
+  async function pickImage() {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ["images"],
       quality: 1,
@@ -17,32 +18,31 @@ export function UploadImage({ value, onChange }: UploadImageProps) {
     if (!result.canceled) {
       onChange(result.assets[0].uri);
     }
-  };
+  }
 
-  const removeImage = () => {
+  function removeImage() {
     onChange(null);
-  };
+  }
 
   return (
     <View className="gap-3">
-      <Text className="font-heading text-xl text-gray-700">
-        Imagem do Produto:
-      </Text>
+      <Text className="font-heading text-xl">Imagem do Produto:</Text>
       {!value ? (
         <TouchableOpacity
+          activeOpacity={0.6}
           onPress={pickImage}
-          className="items-center rounded-xl border-2 border-dashed border-gray-300 p-8 hover:border-red-400"
+          className="items-center rounded-xl border-2 border-dashed border-gray-300 p-8"
         >
-          <View className="mb-3 h-12 w-12 items-center justify-center rounded-full bg-gray-100">
-            <Ionicons name="cloud-upload-outline" size={24} color="#9ca3af" />
+          <View className="mb-3 size-12 items-center justify-center rounded-full bg-gray-100">
+            <Feather name="upload" size={20} color={colors["gray-medium"]} />
           </View>
           <Text className="font-medium text-gray-600">
             Clique para fazer upload
           </Text>
-          <Text className="text-sm text-gray-400">PNG, JPG até 5MB</Text>
+          <Text className="font-body text-gray-medium">PNG, JPG até 5MB</Text>
         </TouchableOpacity>
       ) : (
-        <View className="relative overflow-hidden rounded-xl">
+        <View>
           <Image
             source={{ uri: value }}
             className="h-48 w-full rounded-xl"
@@ -50,9 +50,9 @@ export function UploadImage({ value, onChange }: UploadImageProps) {
           />
           <TouchableOpacity
             onPress={removeImage}
-            className="absolute right-2 top-2 h-8 w-8 items-center justify-center rounded-full bg-red-500 hover:bg-red-600"
+            className="absolute right-2 top-2 h-8 w-8 items-center justify-center rounded-full bg-red-normal"
           >
-            <Ionicons name="close" size={16} color="#fff" />
+            <Feather name="x" size={18} color="white" />
           </TouchableOpacity>
         </View>
       )}

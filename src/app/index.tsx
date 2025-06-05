@@ -14,6 +14,7 @@ import { Card } from "../components/card-product";
 import { Header } from "../components/header";
 import { useProductStore } from "../store/product-store";
 import { Feather } from "@expo/vector-icons";
+import { colors } from "../constants/colors";
 
 export default function App() {
   const { products } = useProductStore();
@@ -38,11 +39,11 @@ export default function App() {
           ) : (
             <>
               <View className="mb-8 w-full flex-row items-center gap-6">
-                <View className="flex-1 flex-row items-center rounded-full border border-[#ee4c58] pl-4">
+                <View className="flex-1 flex-row items-center rounded-full border border-red-normal pl-4">
                   <Feather
                     name="search"
                     size={18}
-                    color="#ee4c58"
+                    color={colors["red-normal"]}
                     onPress={() => inputRef.current?.focus()}
                   />
                   <TextInput

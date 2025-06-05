@@ -3,6 +3,7 @@ import { Controller, Control } from "react-hook-form";
 import { Dropdown } from "react-native-element-dropdown";
 import { ProductFormData } from "../interfaces/IProduct";
 import { useRef } from "react";
+import { colors } from "../constants/colors";
 
 interface CategoryPickerProps {
   control: Control<ProductFormData>;
@@ -40,7 +41,7 @@ export function CategoryPicker({ control }: CategoryPickerProps) {
             <Text className="font-heading text-xl">Categoria:</Text>
             <TouchableOpacity
               activeOpacity={0.6}
-              className="rounded-lg border border-transparent bg-[#f1f1f1] px-4"
+              className="bg-gray-light rounded-lg border border-transparent px-4"
               onPress={handlePress}
             >
               <Dropdown
@@ -55,11 +56,9 @@ export function CategoryPicker({ control }: CategoryPickerProps) {
                   height: 48,
                 }}
                 placeholderStyle={{
-                  color: "#676767",
                   fontFamily: "Dosis_400Regular",
                 }}
                 selectedTextStyle={{
-                  color: "#222",
                   fontFamily: "Dosis_400Regular",
                 }}
                 itemTextStyle={{
@@ -68,8 +67,8 @@ export function CategoryPicker({ control }: CategoryPickerProps) {
                 containerStyle={{
                   borderRadius: 8,
                 }}
-                iconStyle={{ tintColor: "#ee4c58" }}
-                activeColor="#fdedee"
+                iconStyle={{ tintColor: colors["red-normal"] }}
+                activeColor={colors["red-light"]}
                 mode="modal"
                 backgroundColor="rgba(0,0,0,0.5)"
               />

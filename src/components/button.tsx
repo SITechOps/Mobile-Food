@@ -16,12 +16,12 @@ const button = tv({
   variants: {
     type: {
       filled: {
-        view: "bg-[#ee4c58] p-3",
+        view: "bg-red-normal p-3",
         text: "font-heading text-white",
       },
       outlined: {
-        view: "border border-[#ee4c58] bg-white p-2",
-        text: "text-[#ee4c58] font-medium",
+        view: "border border-red-normal bg-white p-2",
+        text: "text-red-normal font-medium",
       },
       plain: {
         view: "py-1 px-6 w-fit m-auto",

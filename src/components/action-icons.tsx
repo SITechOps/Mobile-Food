@@ -3,6 +3,7 @@ import { View } from "react-native";
 import { Icon } from "./icon";
 import { useProductActions } from "../hooks/use-product-actions";
 import { twMerge } from "tailwind-merge";
+import { colors } from "../constants/colors";
 
 interface ActionIconsProps {
   productId: string | undefined;
@@ -15,7 +16,7 @@ export function ActionIcons({ productId, className }: ActionIconsProps) {
       <Icon
         className="px-2 py-4"
         name="edit"
-        color="#a9a9a9"
+        color={colors["gray-medium"]}
         onPress={() => {
           router.push(`/form/edit-product?id=${productId}`);
         }}
@@ -23,7 +24,7 @@ export function ActionIcons({ productId, className }: ActionIconsProps) {
       <Icon
         className="px-2 py-4"
         name="trash-2"
-        color="#ee7b83"
+        color={colors["red-normal"]}
         onPress={() => handleDeleteProduct(productId)}
       />
     </View>

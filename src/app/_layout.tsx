@@ -28,9 +28,9 @@ export default function Layout() {
   }
 
   return (
-    <SafeAreaView className="flex-1">
-      <StatusBar hidden={false} />
-      <View className="absolute bottom-0 left-0 top-0 w-1/2 rounded-r-full bg-[#fdedee]" />
+    <SafeAreaView className="flex-1 bg-white">
+      <StatusBar barStyle="dark-content" hidden={false} />
+      <View className="absolute bottom-2 left-0 top-6 w-1/2 rounded-r-full bg-red-light" />
       <Slot />
     </SafeAreaView>
   );

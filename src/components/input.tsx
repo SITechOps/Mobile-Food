@@ -27,7 +27,7 @@ export function Input({ label, name, control, ...rest }: InputProps) {
             onLayout={() => {
               rest.multiline && inputRef.current?.setSelection(0, 0);
             }}
-            className="rounded-lg border border-transparent bg-[#f1f1f1] px-4 py-3 font-body text-lg focus:border-[#ee4c58]"
+            className="bg-gray-light rounded-lg border border-transparent px-4 py-3 font-body text-lg focus:border-red-normal"
             {...rest}
           />
         </View>

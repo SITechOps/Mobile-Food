@@ -12,7 +12,7 @@ export function Card({ product }: CardProps) {
     <TouchableOpacity
       activeOpacity={0.6}
       onPress={() => router.push(`/product/${product.id}`)}
-      className="flex-row items-center justify-between rounded-lg border border-[#a9a9a9] bg-white px-5 py-4"
+      className="flex-row items-center justify-between rounded-xl border border-gray-medium bg-white px-5 py-4"
     >
       <View className="flex-1 flex-row items-center gap-4">
         <Image
