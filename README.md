@@ -38,13 +38,21 @@ A instalação e configuração do NativeWind foi feita conforme descrito na doc
 
 ## ▶️ Executando o Projeto
 
-1. Instale as dependências:
+### 1. Instale as dependências:
 
 ```bash
 npm install # ou npm i
 ```
 
-2. Inicie o projeto:
+💡 Dica: Se ocorrerem erros relacionados a versões ou dependências incompatíveis com o SDK atual do Expo, use:
+
+```bash
+npx expo install --fix
+```
+
+Esse comando atualiza todas as dependências para versões compatíveis com a versão atual do SDK do Expo.
+
+### 2. Inicie o projeto:
 
 ```bash
 npm start --clear # ou -c
