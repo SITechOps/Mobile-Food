@@ -1,12 +1,9 @@
-export interface ProductFormData {
+export interface ProductProps {
+  id?: string;
   name: string;
-  price: string;
-  stock: string;
+  price: number;
+  stock: number;
   category: string;
   description: string;
   imageUrl: string;
-}
-
-export interface ProductProps extends ProductFormData {
-  id: string;
 }

@@ -25,7 +25,7 @@ export default function ProductDetails() {
             {product?.name}
           </Text>
           <Text className="font-heading text-2xl leading-10 text-red-normal">
-            R$ {product?.price ? parseFloat(product.price).toFixed(2) : "0.00"}
+            R$ {(product?.price ?? 0).toFixed(2)}
           </Text>
         </View>
 
@@ -34,7 +34,7 @@ export default function ProductDetails() {
             {product?.category}
           </InfoTag>
           <InfoTag color={colors["gray-dark"]} icon="box">
-            {product?.stock == "0"
+            {product?.stock == 0
               ? "Indisponível"
               : `Disponível: ${product?.stock}`}
           </InfoTag>

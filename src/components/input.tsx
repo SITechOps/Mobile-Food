@@ -1,12 +1,12 @@
 import { Control, Controller } from "react-hook-form";
 import { View, Text, TextInput, TextInputProps } from "react-native";
-import { ProductFormData } from "../interfaces/IProduct";
+import { ProductProps } from "../interfaces/IProduct";
 import { useRef } from "react";
 
 type InputProps = TextInputProps & {
   label: string;
-  name: keyof ProductFormData;
-  control: Control<ProductFormData>;
+  name: keyof ProductProps;
+  control: Control<ProductProps>;
 };
 
 export function Input({ label, name, control, ...rest }: InputProps) {
@@ -22,8 +22,12 @@ export function Input({ label, name, control, ...rest }: InputProps) {
           <Text className="font-heading text-xl">{label}:</Text>
           <TextInput
             ref={inputRef}
-            value={value}
-            onChangeText={onChange}
+            value={String(value ?? "")}
+            onChangeText={(text) =>
+              name === "price" || name === "stock"
+                ? onChange(Number(text))
+                : onChange(text)
+            }
             onLayout={() => {
               rest.multiline && inputRef.current?.setSelection(0, 0);
             }}

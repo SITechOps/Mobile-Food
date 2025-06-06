@@ -4,20 +4,20 @@ import { Button } from "./button";
 import { CategoryPicker } from "./category-picker";
 import { Header } from "./header";
 import { Input } from "./input";
-import { ProductFormData } from "../interfaces/IProduct";
+import { ProductProps } from "../interfaces/IProduct";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { router } from "expo-router";
 import { UploadImage } from "./upload-image";
 
 interface FormProps {
-  control: Control<ProductFormData>;
+  control: Control<ProductProps>;
   onPress: () => void;
   title: string;
 }
 
 export function Form({ control, onPress, title }: FormProps) {
   return (
-    <KeyboardAwareScrollView>
+    <KeyboardAwareScrollView enableOnAndroid extraScrollHeight={90}>
       <Header title={title} />
       <View className="mx-8 mb-4 gap-4 rounded-xl bg-white px-8 py-6 shadow-lg shadow-gray-medium">
         <Input

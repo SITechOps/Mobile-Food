@@ -1,6 +1,6 @@
 import { Alert } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
-import { ProductFormData } from "../interfaces/IProduct";
+import { ProductProps } from "../interfaces/IProduct";
 import { useProductStore } from "../store/product-store";
 
 export function useProductActions() {
@@ -12,7 +12,7 @@ export function useProductActions() {
     return products.find((p) => p.id === id);
   }
 
-  function onSubmit(data: ProductFormData) {
+  function onSubmit(data: ProductProps) {
     const isEditing = Boolean(id);
     try {
       if (isEditing) {

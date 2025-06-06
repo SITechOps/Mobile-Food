@@ -2,8 +2,8 @@
   {
     "id": "1748644270682",
     "name": "Hambúrguer",
-    "price": "25.00",
-    "stock": "4",
+    "price": 25.0,
+    "stock": 4,
     "description": "Hambúrguer artesanal com carne 100% bovina, queijo derretido, alface crocante, tomate fresco e molho especial, no pão brioche dourado.",
     "category": "Lanches",
     "imageUrl": "https://cloudfront-us-east-1.images.arcpublishing.com/estadao/77XTHHCCLBEXLC2Y5RK4PN37CE.jpg"
@@ -11,8 +11,8 @@
   {
     "id": "1748644232997",
     "name": "Pizza Calabresa",
-    "price": "53.00",
-    "stock": "3",
+    "price": 53.0,
+    "stock": 3,
     "description": "Pizza italiana clássica com molho de tomate, mussarela, manjericão fresco, sal e azeite. Feita com nossa massa caseira, preparada diariamente.",
     "category": "Massas",
     "imageUrl": "https://oficinadaspizzas.com.br/wp-content/uploads/2024/07/pizza-banner-v2.png"

@@ -1,12 +1,12 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import { Controller, Control } from "react-hook-form";
 import { Dropdown } from "react-native-element-dropdown";
-import { ProductFormData } from "../interfaces/IProduct";
+import { ProductProps } from "../interfaces/IProduct";
 import { useRef } from "react";
 import { colors } from "../constants/colors";
 
 interface CategoryPickerProps {
-  control: Control<ProductFormData>;
+  control: Control<ProductProps>;
 }
 
 const availableOptions = [

@@ -68,8 +68,8 @@ export default function App() {
                 <FlatList
                   className="mb-8 w-full gap-6"
                   data={filteredProducts}
-                  keyExtractor={(item) => item.id}
-                  renderItem={({ item }) => <Card product={item} />}
+                  keyExtractor={(item) => item.id || item.name}
+                  renderItem={({ item }) => <Card {...item} />}
                   contentContainerStyle={{ gap: 16 }}
                   showsVerticalScrollIndicator={false}
                   keyboardShouldPersistTaps="handled"

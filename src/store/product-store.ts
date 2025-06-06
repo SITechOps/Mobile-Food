@@ -1,13 +1,13 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import sampleProducts from "./sample.json";
-import { ProductFormData, ProductProps } from "../interfaces/IProduct";
+import sampleProducts from "../utils/sample.json";
+import { ProductProps } from "../interfaces/IProduct";
 
 interface StateProps {
   products: ProductProps[];
-  addProduct: (newProduct: ProductFormData) => void;
-  editProduct: (idProduct: string, newProduct: ProductFormData) => void;
+  addProduct: (newProduct: ProductProps) => void;
+  editProduct: (idProduct: string, newProduct: ProductProps) => void;
   removeProduct: (idProduct: string) => void;
 }
 
