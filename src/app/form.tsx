@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { View, Alert } from "react-native";
 import { Controller, useForm } from "react-hook-form";
 import { router, useLocalSearchParams } from "expo-router";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -18,6 +18,14 @@ export default function Form() {
   const { control, handleSubmit } = useForm<ProductProps>({
     defaultValues: id && product ? { ...product } : {}
   });
+
+  function handleFormSubmit(data: ProductProps) {
+    onSubmit(data);
+  }
+
+  function handleFormError() {
+    Alert.alert("Campos obrigatórios", "Por favor, preencha todos os campos!");
+  }
 
   return (
     <KeyboardAwareScrollView enableOnAndroid extraScrollHeight={90}>
@@ -61,7 +69,7 @@ export default function Form() {
           <Button
             title="Salvar"
             type="filled"
-            onPress={handleSubmit(onSubmit)}
+            onPress={handleSubmit(handleFormSubmit, handleFormError)}
           />
           <Button title="Voltar" type="plain" onPress={() => router.back()} />
         </View>
