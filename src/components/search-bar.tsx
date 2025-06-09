@@ -12,7 +12,7 @@ export function SearchBar({ value, onChangeText }: SearchBarProps) {
   const inputRef = useRef<TextInput>(null);
 
   return (
-    <View className="flex-1 flex-row items-center rounded-full border border-red-normal">
+    <View className="border-red-normal flex-1 flex-row items-center rounded-full border">
       <Feather
         className="p-3"
         name="search"
@@ -23,6 +23,7 @@ export function SearchBar({ value, onChangeText }: SearchBarProps) {
       <TextInput
         ref={inputRef}
         placeholder="Buscar..."
+        placeholderTextColor={colors["gray-dark"]}
         value={value}
         onChangeText={onChangeText}
         className="flex-1 py-2 font-body text-xl"

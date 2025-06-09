@@ -16,20 +16,19 @@ export function Input({ label, name, control, ...rest }: InputProps) {
     <Controller
       control={control}
       name={name}
+      defaultValue=""
       rules={{ required: true }}
       render={({ field: { value, onChange } }) => (
-        <View className="flex-1 gap-2">
+        <View style={{ marginBottom: 16 }}>
           <Text className="font-heading text-xl">{label}:</Text>
           <TextInput
             ref={inputRef}
             value={String(value ?? "")}
+            placeholderTextColor="#9CA3AF"
             onChangeText={(text) =>
               name === "stock" ? onChange(Number(text)) : onChange(text)
             }
-            onLayout={() => {
-              rest.multiline && inputRef.current?.setSelection(0, 0);
-            }}
-            className="rounded-lg border border-transparent bg-gray-light px-4 py-3 font-body text-lg focus:border-red-normal"
+            className="bg-gray-light focus:border-red-normal rounded-lg border border-transparent px-4 py-3 font-body text-lg"
             {...rest}
           />
         </View>
