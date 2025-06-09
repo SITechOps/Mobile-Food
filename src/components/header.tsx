@@ -6,7 +6,7 @@ interface HeaderProps {
 
 export function Header({ title }: HeaderProps) {
   return (
-    <View className="mx-6 mb-8 flex-row items-center border-b-2 border-red-normal pb-6 pt-8">
+    <View className="mx-6 mb-8 flex-row items-center border-b-2 border-red-normal py-5">
       <Image
         className="ml-2 h-16 w-36"
         style={{ resizeMode: "contain" }}

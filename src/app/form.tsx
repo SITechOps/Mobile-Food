@@ -1,26 +1,27 @@
-import { Control, Controller } from "react-hook-form";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { View } from "react-native";
-import { router } from "expo-router";
+import { Controller, useForm } from "react-hook-form";
+import { router, useLocalSearchParams } from "expo-router";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-import { Button } from "./button";
-import { CategoryPicker } from "./category-picker";
-import { Header } from "./header";
-import { Input } from "./input";
-import { MoneyInput } from "./money-input";
+import { useProductActions } from "@/src/hooks/use-product-actions";
+import { Input } from "../components/input";
+import { Button } from "../components/button";
+import { Header } from "../components/header";
 import { ProductProps } from "../interfaces/IProduct";
-import { UploadImage } from "./upload-image";
+import { MoneyInput } from "../components/money-input";
+import { UploadImage } from "../components/upload-image";
+import { CategoryPicker } from "../components/category-picker";
 
-interface FormProps {
-  control: Control<ProductProps>;
-  onPress: () => void;
-  title: string;
-}
+export default function Form() {
+  const { id } = useLocalSearchParams<{ id?: string }>();
+  const { product, onSubmit } = useProductActions();
+  const { control, handleSubmit } = useForm<ProductProps>({
+    defaultValues: id && product ? { ...product } : {}
+  });
 
-export function Form({ control, onPress, title }: FormProps) {
   return (
     <KeyboardAwareScrollView enableOnAndroid extraScrollHeight={90}>
-      <Header title={title} />
+      <Header title={id ? "Editar Produto" : "Adicionar Produto"} />
       <View className="mx-8 mb-4 gap-4 rounded-xl bg-white px-8 py-6 shadow-lg shadow-gray-medium">
         <Input
           name="name"
@@ -57,7 +58,11 @@ export function Form({ control, onPress, title }: FormProps) {
           )}
         />
         <View className="mt-4 gap-3">
-          <Button title="Salvar" type="filled" onPress={onPress} />
+          <Button
+            title="Salvar"
+            type="filled"
+            onPress={handleSubmit(onSubmit)}
+          />
           <Button title="Voltar" type="plain" onPress={() => router.back()} />
         </View>
       </View>

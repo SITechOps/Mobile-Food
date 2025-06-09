@@ -6,7 +6,7 @@ import {
   Text,
   View,
   TouchableWithoutFeedback,
-  Keyboard,
+  Keyboard
 } from "react-native";
 import { Button } from "../components/button";
 import { Card } from "../components/card-product";
@@ -21,7 +21,7 @@ export default function App() {
   const { isKeyboardVisible } = useKeyboard();
 
   const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(search.toLowerCase()),
+    product.name.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -68,7 +68,7 @@ export default function App() {
             title="Adicionar"
             type="filled"
             className="text-2xl"
-            onPress={() => router.push("/form/add-product")}
+            onPress={() => router.push("/form")}
           />
         </View>
       </TouchableWithoutFeedback>

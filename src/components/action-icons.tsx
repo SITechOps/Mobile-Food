@@ -18,7 +18,7 @@ export function ActionIcons({ productId, className }: ActionIconsProps) {
         name="edit"
         color={colors["gray-medium"]}
         onPress={() => {
-          router.push(`/form/edit-product?id=${productId}`);
+          router.push(`/form?id=${productId}`);
         }}
       />
       <Icon

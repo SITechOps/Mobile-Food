@@ -1,8 +1,9 @@
-import { Text, TouchableOpacity, View } from "react-native";
-import { Controller, Control } from "react-hook-form";
+import { Control, Controller } from "react-hook-form";
 import { Dropdown } from "react-native-element-dropdown";
-import { ProductProps } from "../interfaces/IProduct";
+import { Text, TouchableOpacity, View } from "react-native";
 import { useRef } from "react";
+
+import { ProductProps } from "../interfaces/IProduct";
 import { colors } from "../constants/colors";
 
 interface CategoryPickerProps {
@@ -15,12 +16,12 @@ const availableOptions = [
   "Sobremesas",
   "Massas",
   "Vegetariana",
-  "Grãos",
+  "Grãos"
 ];
 
 const CATEGORIES = availableOptions.map((item) => ({
   label: item,
-  value: item,
+  value: item
 }));
 
 export function CategoryPicker({ control }: CategoryPickerProps) {
@@ -41,7 +42,7 @@ export function CategoryPicker({ control }: CategoryPickerProps) {
             <Text className="font-heading text-xl">Categoria:</Text>
             <TouchableOpacity
               activeOpacity={0.6}
-              className="bg-gray-light rounded-lg border border-transparent px-4"
+              className="rounded-lg border border-transparent bg-gray-light px-4"
               onPress={handlePress}
             >
               <Dropdown
@@ -53,19 +54,19 @@ export function CategoryPicker({ control }: CategoryPickerProps) {
                 value={value}
                 onChange={(item) => onChange(item.value)}
                 style={{
-                  height: 48,
+                  height: 48
                 }}
                 placeholderStyle={{
-                  fontFamily: "Dosis_400Regular",
+                  fontFamily: "Dosis_400Regular"
                 }}
                 selectedTextStyle={{
-                  fontFamily: "Dosis_400Regular",
+                  fontFamily: "Dosis_400Regular"
                 }}
                 itemTextStyle={{
-                  fontFamily: "Dosis_400Regular",
+                  fontFamily: "Dosis_400Regular"
                 }}
                 containerStyle={{
-                  borderRadius: 8,
+                  borderRadius: 8
                 }}
                 iconStyle={{ tintColor: colors["red-normal"] }}
                 activeColor={colors["red-light"]}

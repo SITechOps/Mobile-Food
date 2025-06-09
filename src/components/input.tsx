@@ -24,9 +24,7 @@ export function Input({ label, name, control, ...rest }: InputProps) {
             ref={inputRef}
             value={String(value ?? "")}
             onChangeText={(text) =>
-              name === "price" || name === "stock"
-                ? onChange(Number(text))
-                : onChange(text)
+              name === "stock" ? onChange(Number(text)) : onChange(text)
             }
             onLayout={() => {
               rest.multiline && inputRef.current?.setSelection(0, 0);
