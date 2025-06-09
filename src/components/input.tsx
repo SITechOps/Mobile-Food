@@ -1,9 +1,9 @@
 import { Control, Controller } from "react-hook-form";
-import { View, Text, TextInput, TextInputProps } from "react-native";
-import { ProductProps } from "../interfaces/IProduct";
+import { Text, TextInput, TextInputProps, View } from "react-native";
 import { useRef } from "react";
+import { ProductProps } from "../interfaces/IProduct";
 
-type InputProps = TextInputProps & {
+export type InputProps = TextInputProps & {
   label: string;
   name: keyof ProductProps;
   control: Control<ProductProps>;
@@ -31,7 +31,7 @@ export function Input({ label, name, control, ...rest }: InputProps) {
             onLayout={() => {
               rest.multiline && inputRef.current?.setSelection(0, 0);
             }}
-            className="bg-gray-light rounded-lg border border-transparent px-4 py-3 font-body text-lg focus:border-red-normal"
+            className="rounded-lg border border-transparent bg-gray-light px-4 py-3 font-body text-lg focus:border-red-normal"
             {...rest}
           />
         </View>

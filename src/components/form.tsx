@@ -1,12 +1,14 @@
-import { View } from "react-native";
 import { Control, Controller } from "react-hook-form";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { View } from "react-native";
+import { router } from "expo-router";
+
 import { Button } from "./button";
 import { CategoryPicker } from "./category-picker";
 import { Header } from "./header";
 import { Input } from "./input";
+import { MoneyInput } from "./money-input";
 import { ProductProps } from "../interfaces/IProduct";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { router } from "expo-router";
 import { UploadImage } from "./upload-image";
 
 interface FormProps {
@@ -27,13 +29,7 @@ export function Form({ control, onPress, title }: FormProps) {
           control={control}
         />
         <View className="flex-row gap-10">
-          <Input
-            name="price"
-            label="Preço (R$)"
-            placeholder="0,00"
-            keyboardType="number-pad"
-            control={control}
-          />
+          <MoneyInput name="price" label="Preço" control={control} />
           <Input
             name="stock"
             label="Estoque"

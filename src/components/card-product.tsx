@@ -1,7 +1,9 @@
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import { router } from "expo-router";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+
 import { ActionIcons } from "./action-icons";
 import { ProductProps } from "../interfaces/IProduct";
+import { formatCurrency } from "../utils/format-currency";
 
 export function Card({ id, name, price, imageUrl }: ProductProps) {
   return (
@@ -13,14 +15,14 @@ export function Card({ id, name, price, imageUrl }: ProductProps) {
       <View className="flex-1 flex-row items-center gap-4">
         <Image
           source={{
-            uri: imageUrl,
+            uri: imageUrl
           }}
           className="size-14 rounded-full"
         />
         <View className="flex-1">
           <Text className="font-heading text-2xl">{name}</Text>
           <Text className="font-body text-xl">
-            R$ {(price ?? 0).toFixed(2)}
+            {formatCurrency(price || 0)}
           </Text>
         </View>
       </View>
