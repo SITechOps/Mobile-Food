@@ -1,12 +1,6 @@
-import { Slot } from "expo-router";
+import { StatusBar, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import {
-  Keyboard,
-  StatusBar,
-  TouchableWithoutFeedback,
-  View,
-} from "react-native";
-import { Loading } from "../components/loading";
+import { Slot } from "expo-router";
 import {
   Dosis_400Regular,
   Dosis_600SemiBold,
@@ -14,6 +8,7 @@ import {
   Dosis_700Bold,
   useFonts,
 } from "@expo-google-fonts/dosis";
+import { Loading } from "../components/loading";
 
 export default function Layout() {
   const [fontsLoaded] = useFonts({
@@ -29,7 +24,7 @@ export default function Layout() {
 
   return (
     <SafeAreaView className="flex-1 bg-white">
-      <StatusBar barStyle="dark-content" hidden={false} />
+      <StatusBar hidden={false} />
       <View className="absolute bottom-2 left-0 top-6 w-1/2 rounded-r-full bg-red-light" />
       <Slot />
     </SafeAreaView>

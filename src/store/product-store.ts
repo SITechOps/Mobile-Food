@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import sampleProducts from "../utils/sample.json";
+import sampleProducts from "../utils/sample-products.json";
 import { ProductProps } from "../interfaces/IProduct";
 
 interface StateProps {

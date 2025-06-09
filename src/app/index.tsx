@@ -1,25 +1,24 @@
 import "@/global.css";
-import React, { useState, useRef } from "react";
+import { router } from "expo-router";
+import { useState } from "react";
 import {
   FlatList,
   Text,
-  TextInput,
   View,
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import { router } from "expo-router";
 import { Button } from "../components/button";
 import { Card } from "../components/card-product";
 import { Header } from "../components/header";
+import { SearchBar } from "../components/search-bar";
+import { useKeyboard } from "../hooks/use-keyboard";
 import { useProductStore } from "../store/product-store";
-import { Feather } from "@expo/vector-icons";
-import { colors } from "../constants/colors";
 
 export default function App() {
   const { products } = useProductStore();
   const [search, setSearch] = useState("");
-  const inputRef = useRef<TextInput>(null);
+  const { isKeyboardVisible } = useKeyboard();
 
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(search.toLowerCase()),
@@ -29,7 +28,7 @@ export default function App() {
     <>
       <Header title="Mobile Food" />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-        <View className="mx-8 flex-1 items-center justify-center">
+        <View className="mx-8 flex-1 items-center">
           {products.length === 0 ? (
             <View className="flex-1 items-center justify-center">
               <Text className="font-heading text-2xl">
@@ -38,29 +37,17 @@ export default function App() {
             </View>
           ) : (
             <>
-              <View className="mb-8 w-full flex-row items-center gap-6">
-                <View className="flex-1 flex-row items-center rounded-full border border-red-normal pl-4">
-                  <Feather
-                    name="search"
-                    size={18}
-                    color={colors["red-normal"]}
-                    onPress={() => inputRef.current?.focus()}
-                  />
-                  <TextInput
-                    ref={inputRef}
-                    placeholder="Buscar..."
-                    value={search}
-                    onChangeText={setSearch}
-                    className="ml-2 w-full py-2 font-body text-xl"
-                  />
-                </View>
+              <View className="w-full flex-row items-center gap-6">
+                <SearchBar value={search} onChangeText={setSearch} />
                 <Text className="mr-1 font-heading text-xl">
                   Total: {filteredProducts.length}
                 </Text>
               </View>
               {filteredProducts.length === 0 ? (
-                <View className="flex-1 items-center justify-center">
-                  <Text className="font-heading text-xl">
+                <View
+                  className={`${isKeyboardVisible ? "mt-24 flex-1 items-start justify-start" : "flex-1 items-center justify-center"}`}
+                >
+                  <Text className="font-heading text-2xl">
                     Nenhum resultado encontrado!
                   </Text>
                 </View>
@@ -70,7 +57,7 @@ export default function App() {
                   data={filteredProducts}
                   keyExtractor={(item) => item.id || item.name}
                   renderItem={({ item }) => <Card {...item} />}
-                  contentContainerStyle={{ gap: 16 }}
+                  contentContainerStyle={{ gap: 16, paddingTop: 24 }}
                   showsVerticalScrollIndicator={false}
                   keyboardShouldPersistTaps="handled"
                 />
