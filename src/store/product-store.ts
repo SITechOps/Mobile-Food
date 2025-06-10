@@ -1,15 +1,16 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import sampleProducts from "../utils/sample-products.json";
-import { ProductProps } from "../interfaces/IProduct";
 
-interface StateProps {
+import sampleProducts from "@/utils/sample-products.json";
+import { ProductProps } from "@/interfaces/product-props";
+
+type StateProps = {
   products: ProductProps[];
   addProduct: (newProduct: ProductProps) => void;
   editProduct: (idProduct: string, newProduct: ProductProps) => void;
   removeProduct: (idProduct: string) => void;
-}
+};
 
 export const useProductStore = create(
   persist<StateProps>(
@@ -22,9 +23,9 @@ export const useProductStore = create(
             ...state.products,
             {
               ...newProduct,
-              id: String(Date.now()),
-            },
-          ],
+              id: String(Date.now())
+            }
+          ]
         })),
 
       editProduct: (idProduct, newProduct) =>
@@ -32,18 +33,18 @@ export const useProductStore = create(
           products: products.map((products) =>
             products.id === idProduct
               ? { ...products, ...newProduct }
-              : products,
-          ),
+              : products
+          )
         })),
 
       removeProduct: (idProduct) =>
         set(({ products }) => ({
-          products: products.filter((product) => product.id !== idProduct),
-        })),
+          products: products.filter((product) => product.id !== idProduct)
+        }))
     }),
     {
       name: "mobile-food:product",
-      storage: createJSONStorage(() => AsyncStorage),
-    },
-  ),
+      storage: createJSONStorage(() => AsyncStorage)
+    }
+  )
 );

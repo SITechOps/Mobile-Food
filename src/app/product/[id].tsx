@@ -1,20 +1,20 @@
 import { Image, Text, View } from "react-native";
 import { router } from "expo-router";
 
-import { ActionIcons } from "@/src/components/action-icons";
-import { Button } from "@/src/components/button";
-import { Header } from "@/src/components/header";
-import { InfoTag } from "@/src/components/info-tag";
-import { colors } from "@/src/constants/colors";
-import { formatCurrency } from "@/src/utils/format-currency";
-import { useProductActions } from "@/src/hooks/use-product-actions";
+import { ActionIcons } from "@/components/action-icons";
+import { Button } from "@/components/button";
+import { Header } from "@/components/header";
+import { InfoTag } from "@/components/info-tag";
+
+import { useProductActions } from "@/hooks/use-product-actions";
+import { formatCurrency } from "@/utils/format-currency";
 
 export default function ProductDetails() {
   const { product } = useProductActions();
   return (
     <>
       <Header title="Detalhes do Produto" />
-      <View className="mx-10 rounded-xl bg-white px-8 py-8 shadow-xl shadow-gray-medium">
+      <View className="mx-2 rounded-xl bg-white px-8 py-8 shadow-xl shadow-gray-medium">
         <ActionIcons productId={product?.id} className="-mt-5 ml-auto" />
         <View className="-mt-3 mb-3 items-center">
           <Image
@@ -32,10 +32,10 @@ export default function ProductDetails() {
         </View>
 
         <View className="mt-1 flex-row justify-between border-y border-gray-medium py-4">
-          <InfoTag color={colors["red-normal"]} icon="tag">
+          <InfoTag color="red-normal" icon="tag">
             {product?.category}
           </InfoTag>
-          <InfoTag color={colors["gray-dark"]} icon="box">
+          <InfoTag color="gray-dark" icon="box">
             {product?.stock == 0
               ? "Indisponível"
               : `Disponível: ${product?.stock}`}

@@ -1,7 +1,7 @@
-import { Control, Controller } from "react-hook-form";
-import { Text, TextInput, TextInputProps, View } from "react-native";
 import { useRef } from "react";
-import { ProductProps } from "../interfaces/IProduct";
+import { Text, TextInput, TextInputProps, View } from "react-native";
+import { Control, Controller } from "react-hook-form";
+import { ProductProps } from "@/interfaces/product-props";
 
 export type InputProps = TextInputProps & {
   label: string;

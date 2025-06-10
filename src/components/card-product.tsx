@@ -1,9 +1,9 @@
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { router } from "expo-router";
 
+import { ProductProps } from "@/interfaces/product-props";
+import { formatCurrency } from "@/utils/format-currency";
 import { ActionIcons } from "./action-icons";
-import { ProductProps } from "../interfaces/IProduct";
-import { formatCurrency } from "../utils/format-currency";
 
 export function Card({ id, name, price, imageUrl }: ProductProps) {
   return (

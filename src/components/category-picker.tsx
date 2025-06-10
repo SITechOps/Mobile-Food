@@ -1,14 +1,14 @@
-import { Control, Controller } from "react-hook-form";
-import { Dropdown } from "react-native-element-dropdown";
-import { Text, TouchableOpacity, View } from "react-native";
 import { useRef } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
+import { Dropdown } from "react-native-element-dropdown";
+import { Control, Controller } from "react-hook-form";
 
-import { ProductProps } from "../interfaces/IProduct";
-import { colors } from "../constants/colors";
+import { ProductProps } from "@/interfaces/product-props";
+import { colors } from "@/constants/colors";
 
-interface CategoryPickerProps {
+type CategoryPickerProps = {
   control: Control<ProductProps>;
-}
+};
 
 const availableOptions = [
   "Bebidas",
