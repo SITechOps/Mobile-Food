@@ -1,5 +1,6 @@
 import { TextInput, TouchableOpacity, View } from "react-native";
 import { useRef } from "react";
+import { colors } from "@/constants/colors";
 import { Icon } from "./icon";
 
 type SearchBarProps = {
@@ -18,6 +19,7 @@ export function SearchBar({ value, onChangeText }: SearchBarProps) {
       <TextInput
         ref={inputRef}
         placeholder="Buscar..."
+        placeholderTextColor={colors["gray-dark"]}
         value={value}
         onChangeText={onChangeText}
         className="flex-1 py-2 pl-3 font-body text-xl"

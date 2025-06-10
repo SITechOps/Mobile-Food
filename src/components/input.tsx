@@ -16,13 +16,15 @@ export function Input({ label, name, control, ...rest }: InputProps) {
     <Controller
       control={control}
       name={name}
+      defaultValue=""
       rules={{ required: true }}
       render={({ field: { value, onChange } }) => (
-        <View className="flex-1 gap-2">
+        <View className="mb-4 flex-1 gap-2">
           <Text className="font-heading text-xl">{label}:</Text>
           <TextInput
             ref={inputRef}
             value={String(value ?? "")}
+            placeholderTextColor="#9CA3AF"
             onChangeText={(text) =>
               name === "stock" ? onChange(Number(text)) : onChange(text)
             }
