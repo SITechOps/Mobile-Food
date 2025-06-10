@@ -19,7 +19,7 @@ export function Input({ label, name, control, ...rest }: InputProps) {
       defaultValue=""
       rules={{ required: true }}
       render={({ field: { value, onChange } }) => (
-        <View className="mb-4 flex-1 gap-2">
+        <View className="flex-1 gap-2">
           <Text className="font-heading text-xl">{label}:</Text>
           <TextInput
             ref={inputRef}

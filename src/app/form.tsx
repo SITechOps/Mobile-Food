@@ -34,7 +34,7 @@ export default function Form() {
         showsVerticalScrollIndicator={false}
         bounces={false}
       >
-        <View className="mx-2 mb-4 gap-4 rounded-xl bg-white px-8 py-6 shadow-lg shadow-gray-medium">
+        <View className="mx-2 mb-4 gap-5 rounded-xl bg-white px-8 py-6 shadow-lg shadow-gray-medium">
           <Input
             name="name"
             label="Nome"
