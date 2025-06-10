@@ -1,18 +1,17 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
-import { Feather } from "@expo/vector-icons";
-import * as ImagePicker from "expo-image-picker";
-import { colors } from "../constants/colors";
+import { Image, Text, TouchableOpacity, View } from "react-native";
+import { launchImageLibraryAsync } from "expo-image-picker";
+import { Icon } from "./icon";
 
-interface UploadImageProps {
+type UploadImageProps = {
   value: string | null;
   onChange: (uri: string | null) => void;
-}
+};
 
 export function UploadImage({ value, onChange }: UploadImageProps) {
   async function pickImage() {
-    const result = await ImagePicker.launchImageLibraryAsync({
+    const result = await launchImageLibraryAsync({
       mediaTypes: ["images"],
-      quality: 1,
+      quality: 1
     });
 
     if (!result.canceled) {
@@ -34,7 +33,7 @@ export function UploadImage({ value, onChange }: UploadImageProps) {
           className="items-center rounded-xl border-2 border-dashed border-gray-300 p-8"
         >
           <View className="mb-3 size-12 items-center justify-center rounded-full bg-gray-100">
-            <Feather name="upload" size={20} color={colors["gray-medium"]} />
+            <Icon name="upload" color="gray-medium" small />
           </View>
           <Text className="font-medium text-gray-600">
             Clique para fazer upload
@@ -52,7 +51,7 @@ export function UploadImage({ value, onChange }: UploadImageProps) {
             onPress={removeImage}
             className="absolute right-2 top-2 h-8 w-8 items-center justify-center rounded-full bg-red-normal"
           >
-            <Feather name="x" size={18} color="white" />
+            <Icon name="x" color="white" small />
           </TouchableOpacity>
         </View>
       )}
