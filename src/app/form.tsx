@@ -27,13 +27,15 @@ export default function Form() {
   }
 
   return (
-    <>
-      <Header title={product ? "Editar Produto" : "Adicionar Produto"} />
+    <View className="flex-1">
       <KeyboardAwareScrollView
         enableOnAndroid
-        showsVerticalScrollIndicator={false}
         bounces={false}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ flexGrow: 1 }}
+        keyboardShouldPersistTaps="handled"
       >
+        <Header title={product ? "Editar Produto" : "Adicionar Produto"} />
         <View className="mx-2 mb-4 gap-5 rounded-xl bg-white px-8 py-6 shadow-lg shadow-gray-medium">
           <Input
             name="name"
@@ -79,6 +81,6 @@ export default function Form() {
           </View>
         </View>
       </KeyboardAwareScrollView>
-    </>
+    </View>
   );
 }
