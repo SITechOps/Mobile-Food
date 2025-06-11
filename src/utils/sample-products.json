@@ -16,5 +16,14 @@
     "description": "Pizza italiana clássica com molho de tomate, mussarela, manjericão fresco, sal e azeite. Feita com nossa massa caseira, preparada diariamente.",
     "category": "Massas",
     "imageUrl": "https://oficinadaspizzas.com.br/wp-content/uploads/2024/07/pizza-banner-v2.png"
+  },
+  {
+    "id": "1748644300004",
+    "name": "Brigadeiro",
+    "price": 3.5,
+    "stock": 40,
+    "description": "Clássico brasileiro feito com leite condensado, chocolate e muito carinho. Cremoso, doce na medida certa e coberto com granulado — impossível comer um só!",
+    "category": "Sobremesas",
+    "imageUrl": "https://xamegobom.com.br/wp-content/uploads/2017/04/brigadeiro-de-leite-condensado.jpg"
   }
 ]

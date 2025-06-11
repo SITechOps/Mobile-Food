@@ -26,7 +26,7 @@ export default function App() {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-      <View className="flex-1 items-center">
+      <View className="mb-1 flex-1 items-center">
         <Header title="Mobile Food" />
         {products.length === 0 ? (
           <View className="flex-1 items-center justify-center">
