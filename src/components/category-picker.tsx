@@ -57,7 +57,8 @@ export function CategoryPicker({ control }: CategoryPickerProps) {
                   height: 48
                 }}
                 placeholderStyle={{
-                  fontFamily: "Dosis_400Regular"
+                  fontFamily: "Dosis_400Regular",
+                  color: colors["gray-medium"]
                 }}
                 selectedTextStyle={{
                   fontFamily: "Dosis_400Regular"

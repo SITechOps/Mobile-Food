@@ -1,7 +1,9 @@
 import { useRef } from "react";
 import { Text, TextInput, TextInputProps, View } from "react-native";
 import { Control, Controller } from "react-hook-form";
+import { handleOnlyNumbersInput } from "@/utils/numeric-input-handler";
 import { ProductProps } from "@/interfaces/product-props";
+import { colors } from "@/constants/colors";
 
 export type InputProps = TextInputProps & {
   label: string;
@@ -24,14 +26,17 @@ export function Input({ label, name, control, ...rest }: InputProps) {
           <TextInput
             ref={inputRef}
             value={String(value ?? "")}
-            placeholderTextColor="#9CA3AF"
-            onChangeText={(text) =>
-              name === "stock" ? onChange(Number(text)) : onChange(text)
-            }
+            placeholderTextColor={colors["gray-medium"]}
+            onChangeText={(text) => {
+              name === "stock"
+                ? handleOnlyNumbersInput(text, onChange)
+                : onChange(text);
+            }}
             onLayout={() => {
               rest.multiline && inputRef.current?.setSelection(0, 0);
             }}
-            className="rounded-lg border border-transparent bg-gray-light px-4 py-3 font-body text-lg focus:border-red-normal"
+            keyboardType={name === "stock" ? "number-pad" : "default"}
+            className="rounded-lg border border-transparent bg-gray-light px-4 py-3 font-body text-lg text-black focus:border-red-normal"
             {...rest}
           />
         </View>
